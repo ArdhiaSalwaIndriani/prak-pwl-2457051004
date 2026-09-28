@@ -23,7 +23,7 @@ class UserController extends Controller
         $user = new User();
 
         $user->nama = $request->nama;
-        $user->nim = $request->npm;
+        $user->npm = $request->npm;
         $user->kelas_id = $request->kelas_id;
 
         $user->save();

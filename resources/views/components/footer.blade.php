@@ -1,20 +1,25 @@
-<footer class="mt-5 py-4"
-        style="background: linear-gradient(135deg, #d63384, #f783ac);">
+<footer class="bg-dark text-white mt-5">
+    <div class="container py-4">
 
-    <div class="container text-center text-white">
+        <div class="row align-items-center">
 
-        <div style="font-size: 24px;">
-            
+            <div class="col-md-6">
+                <h6 class="fw-bold mb-1">
+                    Pemorograman Web Lanjut
+                </h6>
+
+                <small class="text-white-50">
+                    Sistem pengelolaan data pengguna.
+                </small>
+            </div>
+
+            <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                <small class="text-white-50">
+                    &copy; {{ date('Y') }} Pemrograman Web Lanjut. All rights reserved.
+                </small>
+            </div>
+
         </div>
 
-        <p class="fw-semibold mb-1">
-            PWL User
-        </p>
-
-        <small>
-            &copy; {{ date('Y') }} Sistem Informasi Data Pengguna
-        </small>
-
     </div>
-
 </footer>

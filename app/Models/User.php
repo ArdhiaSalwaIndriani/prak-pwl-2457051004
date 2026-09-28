@@ -10,9 +10,11 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $table = 'user';
+
     protected $fillable = [
         'nama',
-        'nim',
+        'npm',
         'kelas_id',
     ];
 
@@ -31,8 +33,8 @@ class User extends Authenticatable
 
     public function getUser()
     {
-        return self::join('kelas', 'users.kelas_id', '=', 'kelas.id')
-            ->select('users.*', 'kelas.nama_kelas')
+        return self::join('kelas', 'user.kelas_id', '=', 'kelas.id')
+            ->select('user.*', 'kelas.nama_kelas')
             ->get();
     }
 }
