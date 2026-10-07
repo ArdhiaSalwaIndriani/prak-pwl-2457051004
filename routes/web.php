@@ -2,9 +2,39 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\MataKuliahController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/profile/{nama}/{kelas}/{npm}', [ProfileController::class, 'profile']);
+
+// USER
+Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+Route::post('/user', [UserController::class, 'store'])->name('user.store');
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
+
+Route::get('/user/{id}/edit', [UserController::class, 'edit'])
+    ->name('user.edit');
+
+Route::put('/user/{id}', [UserController::class, 'update'])
+    ->name('user.update');
+
+Route::delete('/user/{id}', [UserController::class, 'destroy'])
+    ->name('user.destroy');
+
+// MATA KULIAH
+Route::get('/matakuliah', [MataKuliahController::class, 'index']);
+Route::get('/matakuliah/create', [MataKuliahController::class, 'create']);
+Route::post('/matakuliah', [MataKuliahController::class, 'store']);
+
+Route::get('/matakuliah/{id}/edit', [MataKuliahController::class, 'edit'])
+    ->name('matakuliah.edit');
+
+Route::put('/matakuliah/{id}', [MataKuliahController::class, 'update'])
+    ->name('matakuliah.update');
+
+Route::delete('/matakuliah/{id}', [MataKuliahController::class, 'destroy'])
+    ->name('matakuliah.destroy');
