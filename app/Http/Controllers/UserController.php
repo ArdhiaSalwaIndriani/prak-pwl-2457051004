@@ -28,7 +28,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect('/user');
+        return redirect('/user')->with('success', 'User berhasil ditambahkan.');
     }
 
     public function index()
@@ -39,5 +39,44 @@ class UserController extends Controller
         $title = 'Daftar Pengguna';
 
         return view('list_user', compact('users', 'title'));
+    }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+
+        $kelasModel = new Kelas();
+        $kelas = $kelasModel->getKelas();
+
+        $title = 'Edit User';
+
+        return view('edit_user', compact('user', 'kelas', 'title'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'npm' => 'required',
+            'kelas_id' => 'required',
+        ]);
+
+        $user = User::findOrFail($id);
+
+        $user->update([
+            'nama' => $request->nama,
+            'npm' => $request->npm,
+            'kelas_id' => $request->kelas_id,
+        ]);
+
+        return redirect('/user')->with('success', 'User berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect('/user')->with('success', 'User berhasil dihapus.');
     }
 }
